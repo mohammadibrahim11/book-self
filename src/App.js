@@ -1,32 +1,40 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom/dist";
-// import Button from 'react-bootstrap/Button';
+import About from "./Components/About/About";
+
 import Books from "./Components/Books/Books";
-// import Header from './Components/Header/Header';
+
 import Home from "./Components/Home/Home";
 import Root from "./Components/Root/Root";
 
 const App = () => {
   const router = createBrowserRouter([
-    { 
-    path: "/", 
-    element: <Root></Root> ,
-    children:[
     {
-         path:'/home',
-         element:<Home></Home>,
+      path: "/",
+      element: <Root></Root>,
+      children: [
+        {
+          path: "/",
+          element: <book-self></book-self>,
+        },
+        {
+          path: "/home",
+          element: <Home></Home>,
+        },
+        {
+          path: "/books",
+          element: <Books></Books>,
+        },
+        {
+          path: "/about",
+          element: <About></About>,
+        },
+      ],
     },
-    {
-         path:'/books',
-         element:<Books></Books>,
-    },
- 
-  ]
-},
-]);
+  ]);
   return (
     <div>
-        <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 };
